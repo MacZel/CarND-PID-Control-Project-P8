@@ -2,7 +2,7 @@
 #define PID_H
 
 class PID {
- public:
+ public:  
   /**
    * Constructor
    */
@@ -38,6 +38,7 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
+  double prev_cte;
 
   /**
    * PID Coefficients
