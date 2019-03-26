@@ -19,9 +19,6 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   PID::p_error = 0.0;
   PID::i_error = 0.0;
   PID::d_error = 0.0;
-  
-  // Previous cross track error
-  PID::prev_cte = 0.0;
 
 }
 
@@ -33,7 +30,7 @@ void PID::UpdateError(double cte) {
   PID::i_error += cte;
   
   // Differential part
-  PID::d_error = cte - prev_cte;
+  PID::d_error = cte - PID::p_error;
   
 }
 
