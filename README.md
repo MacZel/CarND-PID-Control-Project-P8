@@ -3,6 +3,18 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Reflection
+
+# Describe the effect each of the P, I, D components had in your implementation.
+
+* Proportional part of the controller is responsible for steering the car close to the center line. When controller is initalized as PID::Init(1.0, 0.0, 0.0) only proportional part is being used and the car quickly drifts away from the center line and drives off the road.
+* Integral part of the controller is responsible for incorporating the error by taking into account a bias on the controller. When controller is initialized as PID::Init(0.0, 1.0, 0.0) only integral part is taken itno account an the car starts driving in circles.
+* Differential part of the controller is responsible for the smoothing of the reaction and prevents the proportional part of the controller to drift away from the center line.
+
+# Describe how the final hyperparameters were chosen.
+
+Hyperparameters were chosen by trial and error. I've tried to implement twiddle based on [post](https://martin-thoma.com/twiddle/) but found it difficult to find the right parameters with this approach. I did also incorporate the PID controller for the throttle. To start with I did try setting all hyperparameters to zeros, so to be sure that car is actually ablo to drive ahead. To enable the car to steer I did mostly play with proportional and differential parts of the controller, proportional to enable the steering and differential to smooth the reaction from the controller. I did not observe an improvment when trying to incorporate the integral part.
+
 ## Dependencies
 
 * cmake >= 3.5

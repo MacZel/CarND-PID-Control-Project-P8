@@ -1,5 +1,6 @@
 #ifndef PID_H
 #define PID_H
+#include <vector>
 
 class PID {
  public:  
@@ -7,6 +8,10 @@ class PID {
    * Constructor
    */
   PID();
+  
+  double threshold;
+  std::vector<double> dp;
+  std::vector<double *> p;
 
   /**
    * Destructor.
@@ -46,6 +51,8 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+  
+  double best_error;
 };
 
 #endif  // PID_H
